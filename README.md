@@ -1,3 +1,3 @@
 وبلاگ ساده با جنگو
 ---
-(screenshot(post list).png)
+![لیست نوشته ها](screenshot(post list).png)
