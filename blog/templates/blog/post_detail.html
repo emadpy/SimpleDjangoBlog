@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    خانه
+{% endblock %}
+
+{% block content%}
+    <div class="w3-card-4 w3-margin w3-white">
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="post image" style="width:100%">
+        {% else %}
+            <img src="{% static 'images/default.png' %}" alt="default image" style="width:100%">
+        {% endif %}
+        <div class="w3-container">
+            <h3><b>{{ post.title }}</b></h3>
+            <h5>نویسنده: <span class="w3-opacity">{{ post.author.first_name }}</span></h5>
+            <h5>تاریخ انتشار: <span class="w3-opacity">{{ post.published_jalali }}</span></h5>
+            <h5>دسته بندی: <span class="w3-opacity">{{ post.category.name }}</span></h5>
+        </div>
+    
+        <div class="w3-container">
+            <p>
+                {{ post.content }}
+            </p>
+        </div>
+        <div style="display: flex; gap: 5px;">
+            <a href="{% url 'post_update' post.slug %}" class="w3-button w3-padding-large w3-white w3-border"><b>ویرایش</b></a>
+            <form method="post" action="{% url 'post_delete' post.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="w3-button w3-padding-large w3-white w3-border">حذف</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

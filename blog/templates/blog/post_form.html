@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        ویرایش نوشته
+    {% else %}
+        نوشته جدید
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div style="max-width:700px; margin:40px auto; background:#fff; padding:30px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); font-family:'Vazirmatn', sans-serif; direction:rtl;">
+
+    <h2 style="text-align:center; margin-bottom:25px; color:#333;">
+        {% if object %}
+            ویرایش نوشته
+        {% else %}
+            نوشته جدید
+        {% endif %}
+    </h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div style="margin-bottom:20px;">
+            <label for="id_category" style="display:block; font-weight:bold; margin-bottom:6px;">دسته‌بندی:</label>
+            {{ form.category }}
+        </div>
+
+        <div style="margin-bottom:20px;">
+            <label for="id_title" style="display:block; font-weight:bold; margin-bottom:6px;">عنوان:</label>
+            {{ form.title }}
+        </div>
+
+        <div style="margin-bottom:20px;">
+            <label for="id_slug" style="display:block; font-weight:bold; margin-bottom:6px;">شناسه یکتا:</label>
+            {{ form.slug }}
+        </div>
+
+        <div style="margin-bottom:20px;">
+            <label for="id_content" style="display:block; font-weight:bold; margin-bottom:6px;">محتوا:</label>
+            {{ form.content }}
+        </div>
+
+        <div style="margin-bottom:20px;">
+            <label for="id_image" style="display:block; font-weight:bold; margin-bottom:6px;">تصویر:</label>
+            {{ form.image }}
+        </div>
+
+        <div style="text-align:center;">
+            <button type="submit"
+                class="w3-button w3-padding-large w3-white w3-border">
+                {% if object %}
+                    ذخیره تغییرات
+                {% else %}
+                    ثبت نوشته جدید
+                {% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

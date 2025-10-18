@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+</head>
+<body class="w3-light-grey">
+
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>وبلاگ تکنولوژی</b></h1>
+  <p>خوش آمدید به وبلاگ<span class="w3-tag">تکنولوژی</span></p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  {% block content%}
+  {% endblock %}
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="{% static 'images/Logo.png' %}" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>ادمین وبلاگ</b></h4>
+      <p>سلام! من ادمین این وبلاگ و یک عاشق دنیای تکنولوژی هستم.
+         اینجا تجربه‌ها، اخبار و نکات جالب دنیای دیجیتال و فناوری رو با شما به اشتراک می‌ذارم.
+          همیشه دنبال چیزهای جدید و هیجان‌انگیز در دنیای تکنولوژی هستم و دوست دارم شما هم با من همراه باشید.</p>
+    </div>
+  </div><hr>
+  
+  <!-- List -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>فهرست</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <a href="{% url 'post_list' %}"><span class="w3-large">خانه</span></a><br>
+      </li>
+      <li class="w3-padding-16">
+        <a href="{% url 'post_create' %}"><span class="w3-large">نوشته جدید</span></a><br>
+      </li>
+    </ul>
+  </div>
+  <hr> 
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>تمامی حقوق برای وبلاگ محفوظ است.</p>
+</footer>
+
+</body>
+</html>
